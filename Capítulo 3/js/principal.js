@@ -20,14 +20,22 @@ for (var i = 0; i < pacientes.length; i++) {
         var Av = true;
         var Pv = true;
 
-        if (Peso <= 0 || Peso >= 1000) {
-            console.log("Peso invalido!");
+        if (Peso <= 0 || Peso >= 100) {
             Pv = false;
+
+//      6) Estilos no JS
+
+            //Boa prática: Não auterar o style doretamente no JS, utilize a folha de style
+
+            //paciente.style.backgroundColor = "red"; //Utilizando o style.color podemos trocar a cor da fonte p/ dar enfase que algo está errado
+            paciente.classList.add("paciente-invalido"); // ClassList retorna todas as classes daquele obj e metodos
+            //metodo add permite adc uma classe aquele obj ex.: paciente-invalido que foi criada na folha de style
+            Tdimc.textContent ="Peso invalido"; 
         }
         if (Altura <= 0 || Altura >= 3.00) {
-            console.log("Altura invalido!");
             Av = false;
-            Tdimc.textContent ="Altura invalido"; 
+            paciente.classList.add("paciente-invalido");
+            Tdimc.textContent ="Altura invalido";     
         }
 
         if (Av && Pv) {
